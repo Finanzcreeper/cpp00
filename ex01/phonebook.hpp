@@ -1,5 +1,5 @@
-#ifndef CONTACTBOOK
-#define CONTACTBOOK
+#ifndef CONTACTBOOK_H
+#define CONTACTBOOK_H
 
 #include <iostream>
 #include <string>
