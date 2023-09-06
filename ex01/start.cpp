@@ -32,13 +32,15 @@ void	show_contact(std::string input, PhoneBook book)
 		index -= 1;
 		if (book.contacts[index].first_name.empty())
 			std::cout << "this contact is empty you fool!"<< std::endl;
-		else
+		else if (index >= 0 && index < 8)
 		{
 			std::cout << book.contacts[index].first_name << std::endl;
 			std::cout << book.contacts[index].last_name << std::endl;
 			std::cout << book.contacts[index].nickname << std::endl;
 			std::cout << book.contacts[index].phone_number << std::endl;
 		}
+		else
+			std::cout << "Enter a valid number next try!" << std::endl;
 	}
 	else
 		std::cout << "Enter a valid number next try!" << std::endl;
