@@ -9,19 +9,6 @@ void	print_str(std::string string)
 		std::cout << std::setw(10) << string.substr(0,10);
 }
 
-void	fill_space(std::string &string)
-{
-	std::string	input;
-	
-	getline(std::cin, input);
-	while (input.empty() == true)
-	{
-		std::cout << "Input cant be empty" << std::endl;
-		getline(std::cin, input);
-	}
-	string = input;
-}
-
 void	show_contact(std::string input, PhoneBook book)
 {
 	int	index;
@@ -30,14 +17,14 @@ void	show_contact(std::string input, PhoneBook book)
 	{
 		index = input[0] - '0';
 		index -= 1;
-		if (book.contacts[index].first_name.empty())
+		if (book.contacts[index].get_first_name().empty())
 			std::cout << "this contact is empty you fool!"<< std::endl;
 		else if (index >= 0 && index < 8)
 		{
-			std::cout << book.contacts[index].first_name << std::endl;
-			std::cout << book.contacts[index].last_name << std::endl;
-			std::cout << book.contacts[index].nickname << std::endl;
-			std::cout << book.contacts[index].phone_number << std::endl;
+			std::cout << book.contacts[index].get_first_name() << std::endl;
+			std::cout << book.contacts[index].get_last_name() << std::endl;
+			std::cout << book.contacts[index].get_nickname() << std::endl;
+			std::cout << book.contacts[index].get_phone_number() << std::endl;
 		}
 		else
 			std::cout << "Enter a valid number next try!" << std::endl;
@@ -63,15 +50,15 @@ int main(void)
 		{
 			std::cout << "creating new Contact" << std::endl;
 			std::cout << "enter first Name" << std::endl;
-			fill_space(book.contacts[c].first_name);
+			book.contacts[c].set_first_name();
 			std::cout << "enter last Name" << std::endl;
-			fill_space(book.contacts[c].last_name);
+			book.contacts[c].set_last_name();
 			std::cout << "enter Nickname" << std::endl;
-			fill_space(book.contacts[c].nickname);
+			book.contacts[c].set_nickname();
 			std::cout << "enter Phonenumber" << std::endl;
-			fill_space(book.contacts[c].phone_number);
+			book.contacts[c].set_phone_number();
 			std::cout << "enter Darkest Secret" << std::endl;
-			fill_space(book.contacts[c].darkest_secret);
+			book.contacts[c].set_darkest_secret();
 			if (c < 7)
 				c++;
 			else
@@ -81,13 +68,13 @@ int main(void)
 		{
 			while (i < 8)
 			{
-				print_str(book.contacts[i].first_name);
+				print_str(book.contacts[i].get_first_name());
 				std::cout << "|";
-				print_str(book.contacts[i].last_name);
+				print_str(book.contacts[i].get_last_name());
 				std::cout << "|";
-				print_str(book.contacts[i].nickname);
+				print_str(book.contacts[i].get_nickname());
 				std::cout << "|";
-				print_str(book.contacts[i].phone_number);
+				print_str(book.contacts[i].get_phone_number());
 				std::cout << std::endl;
 				i++;
 			}
